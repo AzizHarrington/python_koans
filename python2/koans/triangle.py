@@ -19,7 +19,13 @@
 #
 def triangle(a, b, c):
     # DELETE 'PASS' AND WRITE THIS CODE
-    pass
+    num_sides = len(set([a, b, c]))
+    if num_sides == 1:
+        return 'equilateral'
+    elif num_sides == 2:
+        return 'isosceles'
+    else:
+        return 'scalene'
 
 
 # Error class used in part 2.  No need to change this code.
