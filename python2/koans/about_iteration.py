@@ -93,7 +93,7 @@ class AboutIteration(Koan):
         for num in range(1, 5):
             pass
 
-        self.assertEqual(__, num)
+        self.assertEqual(4, num)
 
     # ------------------------------------------------------------------
 
