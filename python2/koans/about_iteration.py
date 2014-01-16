@@ -100,7 +100,7 @@ class AboutIteration(Koan):
     def test_all_iteration_methods_work_on_any_sequence_not_just_lists(self):
         # Ranges are an iteratable sequence
         result = map(self.add_ten, range(1, 4))
-        self.assertEqual(__, list(result))
+        self.assertEqual([11, 12, 13], list(result))
 
         try:
             f = open("example_file.txt")
@@ -109,7 +109,7 @@ class AboutIteration(Koan):
                 def make_upcase(line):
                     return line.strip().upper()
                 upcase_lines = map(make_upcase, f.readlines())
-                self.assertEqual(__, list(upcase_lines))
+                self.assertEqual(['THIS', 'IS', 'A', 'TEST'], list(upcase_lines))
             finally:
                 # Arg, this is ugly.
                 # We will figure out how to fix this later.
