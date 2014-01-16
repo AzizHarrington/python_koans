@@ -19,10 +19,25 @@
 #
 def triangle(a, b, c):
     # DELETE 'PASS' AND WRITE THIS CODE
-    num_sides = len(set([a, b, c]))
-    if num_sides == 1:
+    sides = [a, b, c]
+    for side in sides:
+        if side <= 0:
+            raise TriangleError
+
+    num_sides_equal = len(set(sides))
+    if num_sides_equal == 1:
         return 'equilateral'
-    elif num_sides == 2:
+    elif num_sides_equal == 2:
+        side_a = None
+        side_b = None
+        for side in set(sides):
+            if sides.count(side) == 2:
+                side_a = side
+            else:
+                side_b = side
+        if side_a and side_b and side_a < side_b:
+            raise TriangleError
+        
         return 'isosceles'
     else:
         return 'scalene'
