@@ -34,8 +34,30 @@ from runner.koan import *
 # Your goal is to write the score method.
 
 def score(dice):
-    # You need to write this method
-    pass
+    # Returns the score of a roll of 5 dice.
+    # Input will be a list of up to 5 rolled values
+    # Output will be an integer
+    score = 0
+    for die in set(dice):
+        if dice.count(die) >= 3:
+            if die == 1:
+                # rewrote that three 1s get 700 
+                # in addition to their normal
+                # 100 value each
+                # (total 1000 pts for three)
+                score += 700
+            elif die == 5:
+                # three 5's get 350 bonus
+                # to their normal value of 50 each
+                # (total 500 pts for three)
+                score += 350
+            else:
+                score += (die * 100)
+    # add the normal scores for 1s and fives
+    # to the triple bonus calculated in for loop above
+    score += dice.count(1) * 100
+    score += dice.count(5) * 50
+    return score
 
 
 class AboutScoringProject(Koan):
@@ -56,6 +78,9 @@ class AboutScoringProject(Koan):
 
     def test_score_of_a_triple_1_is_1000(self):
         self.assertEqual(1000, score([1, 1, 1]))
+
+    def test_score_of_five_1s_is_1200(self):
+        self.assertEqual(1200, score([1, 1, 1, 1, 1]))
 
     def test_score_of_other_triples_is_100x(self):
         self.assertEqual(200, score([2, 2, 2]))
